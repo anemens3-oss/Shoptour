@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPORA — Вдохновляющие путешествия и авторские туры</title>
+  <meta name="description" content="Сервис поиска вдохновляющих путешествий TRIPORA: курорты, горные треккинги и культурные маршруты с прозрачной ориентировочной стоимостью.">
+  <meta property="og:title" content="TRIPORA — Вдохновляющие путешествия">
+  <meta property="og:description" content="Сервис поиска вдохновляющих путешествий TRIPORA: курорты, горные треккинги и культурные маршруты.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Pure CSS3 Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Top Bar Header (Strict 3-Zone Contract)
+       ======================================================================== -->
+  <header class="site-header" id="topHeader">
+    <div class="container">
+      <div class="header-row">
+        <!-- Zone 1: Single text element wordmark with turquoise brand mark -->
+        <a href="#home" class="brand-wordmark" aria-label="TRIPORA главная">
+          <span>TRIPORA</span>
+          <span class="brand-dot" aria-hidden="true"></span>
+        </a>
+
+        <!-- Zone 2: 5 Concise Single-line Nav Links -->
+        <nav class="header-nav" aria-label="Основная навигация">
+          <a href="#home" class="nav-link active">Главная</a>
+          <a href="#catalog" class="nav-link">Каталог туров</a>
+          <a href="#favorites" class="nav-link" id="navFavoritesLink">
+            <span>Избранное</span>
+            <span class="fav-nav-badge" id="favBadge">0</span>
+          </a>
+          <a href="#about" class="nav-link">О сервисе</a>
+          <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+
+        <!-- Zone 3: 1 Primary Action + Mobile Drawer Toggle -->
+        <div class="header-actions">
+          <a href="#catalog" class="btn-primary">
+            <span>Подобрать тур</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <!-- Mobile Toggle -->
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть мобильное меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-links">
+        <a href="#home" class="mobile-nav-item">Главная страница</a>
+        <a href="#catalog" class="mobile-nav-item">Каталог путешествий</a>
+        <a href="#favorites" class="mobile-nav-item">Избранные туры</a>
+        <a href="#about" class="mobile-nav-item">О компании и гарантиях</a>
+        <a href="#contacts" class="mobile-nav-item">Контакты и консультации</a>
+      </div>
+      <a href="#catalog" class="btn-primary" style="width: 100%; text-align: center;">
+        Перейти к выбору тура
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         1. Hero Section & Search Bar Widget
+         ====================================================================== -->
+    <section class="hero-section" id="heroSection">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-kicker">
+            <span class="brand-dot"></span>
+            <span>ВПЕЧАТЛЕНИЯ БЕЗ ГРАНИЦ · АВТОРСКИЕ МАРШРУТЫ</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Вдохновляющие путешествия, в которые <span>хочется вернуться</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Курируемая коллекция авторских туров по живописным островам, альпийским вершинам и древним городам. Прозрачные ориентировочные сметы и надежное сопровождение.
+          </p>
+
+          <!-- Search Bar Widget -->
+          <div class="search-bar-card">
+            <form id="heroSearchForm" class="search-form-grid">
+              <div class="search-field-group">
+                <label for="heroSearchInput" class="search-field-label">Куда хотите поехать?</label>
+                <input type="text" id="heroSearchInput" class="search-input" placeholder="Страна, город или локация..." autocomplete="off">
+              </div>
+
+              <div class="search-field-group">
+                <label for="heroDateInput" class="search-field-label">Примерные даты</label>
+                <input type="date" id="heroDateInput" class="search-input">
+              </div>
+
+              <div class="search-field-group">
+                <label for="heroTravelersSelect" class="search-field-label">Путешественники</label>
+                <select id="heroTravelersSelect" class="search-input">
+                  <option value="1">1 путешественник</option>
+                  <option value="2" selected>2 взрослых</option>
+                  <option value="3-4">Семья (3–4 чел.)</option>
+                  <option value="5+">Компания (5+ чел.)</option>
+                </select>
+              </div>
+
+              <div class="search-field-group">
+                <label for="heroTypeSelect" class="search-field-label">Тип отдыха</label>
+                <select id="heroTypeSelect" class="search-input">
+                  <option value="all">Все направления</option>
+                  <option value="sea">Пляжи и острова</option>
+                  <option value="mountains">Горы и треккинг</option>
+                  <option value="culture">Культура и история</option>
+                  <option value="adventure">Приключения и природа</option>
+                  <option value="wellness">Экзотика и велнес</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-search-submit">
+                <span>Найти туры</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Quick Discovery Tags -->
+          <div class="quick-tags-row">
+            <span>Популярные идеи:</span>
+            <button class="quick-tag-btn" data-category="sea">Пляжи и лагуны</button>
+            <button class="quick-tag-btn" data-category="mountains">Альпийские горы</button>
+            <button class="quick-tag-btn" data-category="culture">Древняя культура</button>
+            <button class="quick-tag-btn" data-category="adventure">Северные фьорды</button>
+            <button class="quick-tag-btn" data-category="wellness">Балийский велнес</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. Catalog Section (Interactive Filters, Sorting & 12 Cards)
+         ====================================================================== -->
+    <section class="catalog-section" id="catalogSection">
+      <div class="container">
+        <!-- Catalog Header Bar -->
+        <div class="catalog-header-bar">
+          <div>
+            <span class="section-eyebrow">КОЛЛЕКЦИЯ НАПРАВЛЕНИЙ</span>
+            <h2 class="section-title">Каталог путешествий</h2>
+            <p style="font-size:0.95rem; color:var(--text-body); margin-top:0.35rem;">
+              Все цены указаны ориентировочно за 1 путешественника при двухместном размещении в демонстрационных целях.
+            </p>
+          </div>
+
+          <!-- Sorting Dropdown -->
+          <div class="catalog-sort-box">
+            <label for="sortSelect" style="font-size:0.85rem; font-weight:600; color:var(--text-muted); white-space:nowrap;">Сортировка:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="popular">По популярности и рейтингу</option>
+              <option value="price-asc">Сначала недорогие</option>
+              <option value="price-desc">Сначала премиальные</option>
+              <option value="duration-desc">По длительности (сначала долгие)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Controls Toolbar -->
+        <div class="filter-toolbar">
+          <!-- Text Search Filter -->
+          <div style="flex: 1; min-width: 240px; max-width: 380px; position: relative;">
+            <input type="text" id="catalogSearchInput" class="search-input" placeholder="Поиск по названию или стране..." autocomplete="off">
+          </div>
+
+          <!-- Category Segmented Buttons -->
+          <div class="filter-pills-wrap" role="tablist">
+            <button class="type-filter-btn active" data-category="all">Все</button>
+            <button class="type-filter-btn" data-category="sea">Пляжи и острова</button>
+            <button class="type-filter-btn" data-category="mountains">Горы и треккинг</button>
+            <button class="type-filter-btn" data-category="culture">Культура</button>
+            <button class="type-filter-btn" data-category="adventure">Приключения</button>
+            <button class="type-filter-btn" data-category="wellness">Велнес</button>
+          </div>
+
+          <!-- Duration Select -->
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <select id="durationFilter" class="sort-select" style="padding:0.5rem 0.85rem; font-size:0.825rem;">
+              <option value="all">Любая длительность</option>
+              <option value="short">Короткие (до 6 дней)</option>
+              <option value="medium">Стандартные (7–9 дней)</option>
+              <option value="long">Длинные (10+ дней)</option>
+            </select>
+          </div>
+
+          <!-- Summary & Reset -->
+          <div class="filter-summary-row">
+            <span id="catalogResultsCount" style="font-weight:600; color:var(--text-main);">Найдено: 12</span>
+            <button class="btn-reset-filters" id="resetFiltersBtn">Сбросить фильтры</button>
+          </div>
+        </div>
+
+        <!-- Destinations Grid -->
+        <div class="destinations-grid" id="destinationsGrid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. Favorites Section (LocalStorage sync)
+         ====================================================================== -->
+    <section class="favorites-section" id="favoritesSection">
+      <div class="container">
+        <div class="favorites-header">
+          <span class="section-eyebrow">ВАШ СПИСОК ЖЕЛАНИЙ</span>
+          <h2 class="section-title">Сохраненные путешествия</h2>
+          <p id="favoritesSubtitle" style="font-size:0.95rem; color:var(--text-body); margin-top:0.35rem;">
+            Туры сохраняются локально в вашем браузере.
+          </p>
+        </div>
+
+        <div class="destinations-grid" id="favoritesGrid">
+          <!-- Dynamically populated by renderFavoritesView() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. About & Trust Pillars Section
+         ====================================================================== -->
+    <section class="about-section" id="aboutSection">
+      <div class="container">
+        <div style="max-width: 680px;">
+          <span class="section-eyebrow">ПОЧЕМУ ВЫБИРАЮТ TRIPORA</span>
+          <h2 class="section-title">Путешествия, продуманные до мельчайших деталей</h2>
+          <p style="font-size:1.05rem; color:var(--text-body); margin-top:0.75rem; line-height:1.6;">
+            Мы соединяем свободу самостоятельных открытий с безупречным комфортом. Каждый маршрут протестирован нашей командой экспертов.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <span class="pillar-num">01.</span>
+            <h3 class="pillar-title">Проверенные отели и виллы</h3>
+            <p class="pillar-desc">
+              Лично инспектируем каждый отель: панорамные виды, идеальная чистота, локальный колорит и высокие рейтинги гостей.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-num">02.</span>
+            <h3 class="pillar-title">Финансовая прозрачность</h3>
+            <p class="pillar-desc">
+              Никаких скрытых сборов и неожиданных доплат. Вы заранее знаете, что включено в программу, а что остается на личные расходы.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-num">03.</span>
+            <h3 class="pillar-title">Поддержка 24/7 на маршруте</h3>
+            <p class="pillar-desc">
+              Персональный русскоязычный координатор на связи в мессенджере по любым вопросам: от бронирования ресторанов до смены билетов.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-num">04.</span>
+            <h3 class="pillar-title">Небанальные локации</h3>
+            <p class="pillar-desc">
+              Избегаем толп туристов: рассветные точки без людей, скрытые бухты, аутентичные семейные таверны и закрытые винодельни.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. Contacts & Consultation Form Section
+         ====================================================================== -->
+    <section class="contacts-section" id="contactsSection">
+      <div class="container">
+        <div class="contact-layout-grid">
+          <!-- Left: Contact Details -->
+          <div class="contact-info-panel">
+            <div>
+              <span class="section-eyebrow">СВЯЗЬ С КОМАНДОЙ</span>
+              <h2 style="font-size:2rem; color:var(--text-main); margin-bottom:0.75rem;">Нужна помощь в выборе тура?</h2>
+              <p style="font-size:0.95rem; color:var(--text-body); line-height:1.6;">
+                Оставьте заявку на персональный подбор или свяжитесь с нашим тревел-экспертом напрямую.
+              </p>
+            </div>
+
+            <div class="contact-channel-item">
+              <div class="contact-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-meta">
+                <h4>Телефон горячей линии</h4>
+                <a href="tel:+78005553535">+7 (800) 555-35-35 (Демо)</a>
+              </div>
+            </div>
+
+            <div class="contact-channel-item">
+              <div class="contact-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-meta">
+                <h4>Электронная почта</h4>
+                <a href="mailto:concierge-demo@tripora.com">concierge-demo@tripora.com</a>
+              </div>
+            </div>
+
+            <div class="contact-channel-item">
+              <div class="contact-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-meta">
+                <h4>Офис путешествий</h4>
+                <p>Москва, ул. Покровка, 22 (Демонстрационный адрес)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Consultation Form -->
+          <div class="consult-form-card">
+            <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Заявка на подбор маршрута</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">
+              Укажите желаемое направление и контакты, и мы пришлем индивидуальную программу.
+            </p>
+
+            <form id="consultForm" novalidate>
+              <div class="form-field">
+                <label for="clientName" class="form-label">Ваше имя *</label>
+                <input type="text" id="clientName" class="form-input" placeholder="Елена Смирнова" required>
+                <div class="field-error-msg">Пожалуйста, укажите имя</div>
+              </div>
+
+              <div class="form-field">
+                <label for="clientContact" class="form-label">Телефон или Telegram *</label>
+                <input type="text" id="clientContact" class="form-input" placeholder="+7 (999) 000-00-00 или @username" required>
+                <div class="field-error-msg">Введите номер телефона или контакт для связи</div>
+              </div>
+
+              <div class="form-field">
+                <label for="clientWish" class="form-label">Пожелания к поездке (опционально)</label>
+                <textarea id="clientWish" class="form-input" rows="3" placeholder="Например: хочу в горы Швейцарии в августе, спокойный отель для двоих..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; padding: 0.85rem;">
+                <span>Отправить запрос на подбор</span>
+              </button>
+
+              <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:0.75rem;">
+                Демонстрационный режим: запрос обрабатывается на стороне браузера.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       Footer (Quiet & Semantic)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <a href="#home" class="brand-wordmark">
+            <span>TRIPORA</span>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </a>
+          <p class="footer-copy-text">
+            Премиальный сервис поиска вдохновляющих путешествий. Авторские программы, лучшие мировые курорты и искренняя забота о каждом клиенте.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-main); margin-bottom:1rem;">Навигация</h4>
+          <ul class="footer-links-list">
+            <li><a href="#catalog">Каталог путешествий</a></li>
+            <li><a href="#favorites">Сохраненные туры</a></li>
+            <li><a href="#about">О сервисе TRIPORA</a></li>
+            <li><a href="#contacts">Контакты и адреса</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-main); margin-bottom:1rem;">Правовая информация</h4>
+          <ul class="footer-links-list">
+            <li><a href="#contacts">Политика конфиденциальности</a></li>
+            <li><a href="#contacts">Пользовательское соглашение</a></li>
+            <li><a href="#contacts">Отказ от ответственности (Демо)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 TRIPORA Travel Club. Все цены являются ориентировочными примерами и не являются публичной офертой.
+        </div>
+        <a href="#topHeader" style="font-weight:600; color:var(--teal-primary);">Наверх ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Modals: Destination Detailed Sheet & Demo Booking Notice
+       ======================================================================== -->
+
+  <!-- Modal 1: Destination Detailed View -->
+  <div class="modal-overlay" id="destinationModal" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Закрыть подробности">✕</button>
+      
+      <div class="modal-hero-view" id="modalHeroMedia">
+        <!-- SVG Panorama injected dynamically -->
+      </div>
+
+      <div class="modal-inner-pad">
+        <div>
+          <span id="modalDestCountry" style="font-size:0.8rem; font-weight:700; color:var(--teal-primary); text-transform:uppercase; letter-spacing:0.04em;">ГРЕЦИЯ</span>
+          <h2 id="modalDestTitle" style="font-size:1.85rem; color:var(--text-main); margin-top:0.25rem;">Санторини: Ия и Фира</h2>
+          <p id="modalDestDesc" style="font-size:0.95rem; color:var(--text-body); line-height:1.65; margin-top:0.75rem;">
+            Полное описание тура...
+          </p>
+        </div>
+
+        <!-- Specifications Bar -->
+        <div class="detail-specs-bar">
+          <div>
+            <div class="spec-cell-label">Длительность</div>
+            <div class="spec-cell-val" id="modalSpecDays">7 дней</div>
+          </div>
+          <div>
+            <div class="spec-cell-label">Сезон</div>
+            <div class="spec-cell-val" id="modalSpecSeason">Май — Октябрь</div>
+          </div>
+          <div>
+            <div class="spec-cell-label">Рейтинг гостей</div>
+            <div class="spec-cell-val" id="modalSpecRating">4.95 / 5.0</div>
+          </div>
+          <div>
+            <div class="spec-cell-label">Ориентировочная цена*</div>
+            <div class="spec-cell-val tabular-nums" id="modalSpecPrice" style="color:var(--teal-primary);">от 142 000 ₽</div>
+          </div>
+        </div>
+
+        <!-- Itinerary -->
+        <div>
+          <h3 style="font-size:1.15rem; margin-bottom:0.85rem;">Программа путешествия по дням</h3>
+          <div id="modalItineraryList">
+            <!-- Day by day steps injected dynamically -->
+          </div>
+        </div>
+
+        <!-- What is included -->
+        <div>
+          <h3 style="font-size:1.15rem; margin-bottom:0.75rem;">Что входит в стоимость:</h3>
+          <ul id="modalIncludedList" style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+            <!-- Included points -->
+          </ul>
+        </div>
+
+        <!-- Actions -->
+        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; border-top:1px solid var(--border-light); padding-top:1.5rem;">
+          <button class="btn-secondary" id="modalFavToggleBtn">
+            ♡ В избранное
+          </button>
+
+          <button class="btn-primary" id="modalBookNowBtn" style="padding:0.85rem 1.75rem;">
+            <span>Забронировать тур</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Demonstration Booking Disclaimer Dialog -->
+  <div class="modal-overlay" id="demoBookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingNoticeTitle">
+    <div class="modal-window" style="max-width: 540px;">
+      <button class="modal-close-btn" id="demoBookingCloseBtn" aria-label="Закрыть уведомление">✕</button>
+
+      <div style="padding: 2.25rem;">
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--teal-soft); border:1px solid var(--teal-border); display:flex; align-items:center; justify-content:center; color:var(--teal-primary);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <span style="font-size:0.75rem; font-weight:700; color:var(--teal-primary); text-transform:uppercase;">ДЕМОНСТРАЦИОННЫЙ РЕЖИМ</span>
+            <h3 id="bookingNoticeTitle" style="font-size:1.35rem; color:var(--text-main);">Бронирование недоступно</h3>
+          </div>
+        </div>
+
+        <!-- Explicit disclaimer -->
+        <div style="background:var(--bg-sand-light); border:1px solid var(--border-sand); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.25rem;">
+          <p style="font-size:0.875rem; color:var(--text-body); line-height:1.55;">
+            <strong>Внимание:</strong> Сайт TRIPORA работает в демонстрационном режиме. Оплата и передача бронирования не производятся. Для реального заказа требуется подключение серверной части.
+          </p>
+        </div>
+
+        <!-- Tour Summary Details -->
+        <div style="background:#ffffff; border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:1rem; font-size:0.85rem; display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1.5rem;">
+          <div><strong>Направление:</strong> <span id="bookingDestTitle">—</span></div>
+          <div><strong>Сроки:</strong> <span id="bookingTravelDates">—</span></div>
+          <div><strong>Ориентир цены:</strong> <span id="bookingEstPrice" class="tabular-nums" style="color:var(--teal-primary); font-weight:700;">—</span></div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
+          <button class="btn-secondary" id="demoBookingCopyBtn">Скопировать детали</button>
+          <button class="btn-primary" onclick="document.getElementById('demoBookingModal').classList.remove('open'); document.body.style.overflow='';">Понятно</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Shelf -->
+  <div class="toast-shelf" id="toastShelf" aria-live="polite"></div>
+
+  <!-- Pure Vanilla JS Engine -->
+  <script src="./js/app.js"></script>
+</body>
+</html>

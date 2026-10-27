@@ -1,0 +1,6 @@
+{
+  "name": "TRIPORA — Вдохновляющие путешествия",
+  "description": "Премиальный сервис поиска авторских туров, горных экспедиций и пляжного отдыха по всему миру.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
